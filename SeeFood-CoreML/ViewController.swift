@@ -59,6 +59,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     if let image = info[.originalImage] as? UIImage {
       
       imageView.image = image
+      imageView.contentMode = .scaleAspectFit
       imagePicker.dismiss(animated: true, completion: nil)
       guard let ciImage = CIImage(image: image) else {
         fatalError("couldn't convert uiimage to CIImage")
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   
   @IBAction func cameraTapped(_ sender: Any) {
     
-    imagePicker.sourceType = .camera
+    imagePicker.sourceType = .photoLibrary
     imagePicker.allowsEditing = false
     present(imagePicker, animated: true, completion: nil)
   }
